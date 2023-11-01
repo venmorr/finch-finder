@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Finch
 
 # Define the home view
@@ -20,5 +20,13 @@ def finch_detail(request, finch_id):
 class FinchCreate(CreateView):
   model = Finch
   fields = '__all__'
+  success_url = '/finches/'
+
+class FinchUpdate(UpdateView):
+  model = Finch
+  fields = ['type', 'description', 'age']
+
+class FinchDelete(DeleteView):
+  model = Finch
   success_url = '/finches/'
 
